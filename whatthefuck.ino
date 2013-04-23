@@ -104,12 +104,29 @@ void loop()
 /* Main Code */
   citire_linie();
   citire_sharp();
-  if    ( (LFL < praglinie) || (LFR < praglinie) ) 
-    evitare_inapoi(); //evitare
-  else if ( (LBL < praglinie) || (LBR < praglinie) )   
-    evitare_inainte();
-  else
-    atac();
+  if (LFL < praglinie) {
+    if( (LFL < praglinie) && (LFR < praglinie) )
+      evitare_inapoi(); //evitare
+    else
+      rotirestanga();
+  }else if (LFR < praglinie){
+    if ( (LFL < praglinie) && (LFR < praglinie) )
+      evitare_inapoi(); //evitare
+    else
+      rotiredreapta();
+  }
+  else if (LBL<praglinie){
+    if ( (LBL < praglinie) && (LBR < praglinie) )   
+      evitare_inainte();
+    else
+      rotiredreapta();
+  }else if (LBR<praglinie){
+    if ( (LBL < praglinie) && (LBR < praglinie) )   
+      evitare_inainte();
+    else
+      rotirestanga();
+  }else
+  atac();
 
 /*
 drive(0,0);
