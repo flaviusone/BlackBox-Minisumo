@@ -1,14 +1,11 @@
 void atac()
 {
-  x=100;
-  xprec=100;
-  /* urmeaza o carpeala cu delayuri */
+  x=10;
+  xprec=10;
+  
   while(1)
   {
 
-    /* ifuri bannere */
-
-    /* end ifuri bannere */
     /* ifuri sharpuri */
     if ((SL>pragsharp && SR>pragsharp)  || (digitalRead(BF) == 0) ) //inainte
     {  
@@ -27,7 +24,7 @@ void atac()
     }
     else //default rotire stanga
     {
-      x=0; 
+      x=1; 
       //break;
     }
 
@@ -51,7 +48,7 @@ void atac()
         xprec = 10; /* o valoare random*/
         previousMillis2=millis();
       }
-      else x = 5 /*RotireDreaptaRapid*/
+      else x = 5 ;/*RotireDreaptaRapid*/
     }
 
 
@@ -63,22 +60,23 @@ void atac()
         xprec = 10; /* o valoare random*/
         previousMillis3=millis();
       }
-      else x = 5 /*RotireDreaptaRapid*/
+      else x = 5 ;/*RotireDreaptaRapid*/
     }
 
-    if (digitalRead(BL)==0)
+    /* && xprec==10 e ca sa verific daca nu sunt deja intr-o rotire*/
+    if (digitalRead(BL)==0 && xprec==10)
     {
       x=4;
       xprec=1;
       break;
     }
-    else if (digitalRead(BR)==0)
+    else if (digitalRead(BR)==0 && xprec==10)
     {
       x=5;
       xprec=2;
       break;
     }
-    else if (digitalRead(BB)==0)
+    else if (digitalRead(BB)==0 && xprec==10)
     {
       x=6;
       xprec=3;

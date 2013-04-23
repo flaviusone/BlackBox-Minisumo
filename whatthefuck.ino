@@ -42,12 +42,12 @@ Old values before
 int SR,SL,LFR,LFL,LBR,LBL;
 int xprec,x,strat;
 int viteza,viteza_inainte,viteza_rapid;
-
+int delay_BL,delay_BR,delay_BB;
 
 unsigned long previousMillis1 = 0;
 unsigned long previousMillis2 = 0;
 unsigned long previousMillis3 = 0;
-
+int stop=0;
 void setup()
 {
   modpins();           /* set req pins as I/O */
@@ -55,35 +55,36 @@ void setup()
   strat = strategy();
   switch(strat){
     case 0:
-    viteza = 80;
-    viteza_rapid = 100;
-    viteza_inainte = 100;
-    break;
-    case 1:
     viteza = 100;
     viteza_rapid = 120;
     viteza_inainte = 120;
     break;
-    case 2:
+    case 1:
     viteza = 120;
     viteza_rapid = 140;
     viteza_inainte = 140;
     break;
-    case 3:
+    case 2:
     viteza = 140;
     viteza_rapid = 160;
-    viteza_inainte =160;
+    viteza_inainte = 160;
+    break;
+    case 3:
+    viteza = 160;
+    viteza_rapid = 180;
+    viteza_inainte =180;
     break;
   }
   Serial.begin(9600);  /* debug */
   start();           /* start button */
   //  delay(4000);
+  
 }
 void loop()
 {
 
 
-
+/* Main Code
   citire_linie();
   citire_sharp();
   if    ( (LFL < praglinie) || (LFR < praglinie) ) 
@@ -92,8 +93,23 @@ void loop()
     evitare_inainte();
   else
     atac();
+*/
 
-
+/* Debug Code*/
+  citire_linie();
+  citire_sharp();
+  if    ( (LFL < praglinie) || (LFR < praglinie) ) {
+    evitare_inapoi(); //evitare
+    drive(0,0);
+    stop=1;
+  }
+  else if ( (LBL < praglinie) || (LBR < praglinie) )   {
+    evitare_inainte();
+    drive(0,0);
+    stop=1;
+  }
+  else if (stop==0)
+    inainte();
 
 
 }
