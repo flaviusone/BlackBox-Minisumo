@@ -4,9 +4,12 @@
 #define ms2 3
 #define ms1 11
 
-#define strat_pin_0
-#define strat_pin_1
-#define strat_pin_2
+#define strat_pin_0 7
+#define strat_pin_1 4
+#define strat_pin_2 13
+
+#define start_pin 13  /* care e??????? */
+/* o sa fie resetu defapt */
 
 #define pin_LFR 0
 #define pin_LFL 1
@@ -20,9 +23,8 @@
 #define BR 9
 #define BF 8
 
-#define start_pin 13  /* care e??????? */
-#define strat1 10     /* care e??????? */
-#define strat2 10     /* care e??????? */
+
+
 #define ledpin 10     /* care e??????? */
 
 #define viteza 80
@@ -47,7 +49,7 @@ void setup()
   setpins();           /* sets req pins as LOW/HIGH */
   Serial.begin(9600);  /* debug */
   //start();           /* start button */
-  delay(4000);
+//  delay(4000);
 }
 void loop()
 {
@@ -58,6 +60,7 @@ void loop()
   delay(300);
 */
 
+/*
   citire_linie();
   citire_sharp();
   if    ( (LFL < praglinie) || (LFR < praglinie) ) 
@@ -66,7 +69,7 @@ void loop()
     evitare_inainte();
   else
     atac();
-
+*/
 
 
 

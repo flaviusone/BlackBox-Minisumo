@@ -15,8 +15,8 @@ void setpins()
   digitalWrite(ms1,LOW);
   digitalWrite(ms2,LOW);
   digitalWrite(start_pin,LOW);  
-  digitalWrite(strat1,HIGH);
-  digitalWrite(strat2,HIGH);
+  digitalWrite(strat_pin_0,HIGH);
+  digitalWrite(strat_pin_1,HIGH);
 }
 
 void start()
