@@ -15,15 +15,15 @@ void setpins()
   digitalWrite(ms1,LOW);
   digitalWrite(ms2,LOW);
   digitalWrite(start_pin,LOW);  
-  digitalWrite(strat_pin_0,HIGH);
-  digitalWrite(strat_pin_1,HIGH);
+  digitalWrite(strat_pin_0,LOW);
+  digitalWrite(strat_pin_1,LOW);
 }
 
 void start()
 {
   while(1){
     if (digitalRead(start_pin) == 1){
-      //delay(4900);
+      delay(4900);
       break;
     }
   }

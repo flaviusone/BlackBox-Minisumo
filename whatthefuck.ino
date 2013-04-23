@@ -27,16 +27,21 @@
 
 #define ledpin 10     /* care e??????? */
 
+/*
 #define viteza 80
 #define viteza_rapid 100
 #define viteza_inainte 100
+Old values before 
+*/
+
 #define praglinie 650
 #define pragsharp 250
 
 #define valoare_delay 1000
 /*--------- Defines end ---------*/
 int SR,SL,LFR,LFL,LBR,LBL;
-int xprec,x;
+int xprec,x,strat;
+int viteza,viteza_inainte,viteza_rapid;
 
 
 unsigned long previousMillis1 = 0;
@@ -47,20 +52,38 @@ void setup()
 {
   modpins();           /* set req pins as I/O */
   setpins();           /* sets req pins as LOW/HIGH */
+  strat = strategy();
+  switch(strat){
+    case 0:
+    viteza = 80;
+    viteza_rapid = 100;
+    viteza_inainte = 100;
+    break;
+    case 1:
+    viteza = 100;
+    viteza_rapid = 120;
+    viteza_inainte = 120;
+    break;
+    case 2:
+    viteza = 120;
+    viteza_rapid = 140;
+    viteza_inainte = 140;
+    break;
+    case 3:
+    viteza = 140;
+    viteza_rapid = 160;
+    viteza_inainte =160;
+    break;
+  }
   Serial.begin(9600);  /* debug */
-  //start();           /* start button */
-//  delay(4000);
+  start();           /* start button */
+  //  delay(4000);
 }
 void loop()
 {
-/*
-  inainte();
-  delay(500);
-  inapoi();
-  delay(300);
-*/
 
-/*
+
+
   citire_linie();
   citire_sharp();
   if    ( (LFL < praglinie) || (LFR < praglinie) ) 
@@ -69,7 +92,7 @@ void loop()
     evitare_inainte();
   else
     atac();
-*/
+
 
 
 

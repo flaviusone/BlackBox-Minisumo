@@ -32,17 +32,17 @@ void atac()
 
     if (digitalRead(BL)==0)
     {
-      x=4;
+     // x=4;
       break;
     }
     else if (digitalRead(BR)==0)
     {
-      x=5;
+     // x=5;
       break;
     }
     else if (digitalRead(BB)==0)
     {
-      x=6;
+      //x=6;
       break;
     }
 
