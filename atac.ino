@@ -1,6 +1,7 @@
 void atac()
 {
   x=100;
+  xprec=100;
   /* urmeaza o carpeala cu delayuri */
   while(1)
   {
@@ -30,64 +31,80 @@ void atac()
       //break;
     }
 
+    /* daca a fost activat BL*/
+    if(xprec == 1){
+      if(millis() - previousMillis1 > delay_BL)
+      {
+        x = 1;      /* am depasit deci return in default*/
+        xprec = 10; /* o valoare random*/
+        previousMillis1=millis();
+      }
+      else x = 4; /*RotireStangaRapid*/
+    }
+
+
+    /* daca a fost activat BR*/
+    if(xprec == 2){
+      if(millis() - previousMillis2 > delay_BR)
+      {
+        x = 1;       /* am depasit deci return in default*/
+        xprec = 10; /* o valoare random*/
+        previousMillis2=millis();
+      }
+      else x = 5 /*RotireDreaptaRapid*/
+    }
+
+
+    /* daca a fost activat BB*/
+    if(xprec == 3){
+      if(millis() - previousMillis3 > delay_BB)
+      {
+        x = 1;      /* am depasit deci return in default*/
+        xprec = 10; /* o valoare random*/
+        previousMillis3=millis();
+      }
+      else x = 5 /*RotireDreaptaRapid*/
+    }
+
     if (digitalRead(BL)==0)
     {
-     // x=4;
+      x=4;
+      xprec=1;
       break;
     }
     else if (digitalRead(BR)==0)
     {
-     // x=5;
+      x=5;
+      xprec=2;
       break;
     }
     else if (digitalRead(BB)==0)
     {
-      //x=6;
+      x=6;
+      xprec=3;
       break;
     }
-
-    ////////////////////////////magarie
-    /*
-    if ((digitalRead(BF) == 0) && (digitalRead(BR) == 0) ) //inainte
-     x=3;
-     else     if ((digitalRead(BF) == 0) && (digitalRead(BR) == 1) ) //ROTIRE STANGA
-     x=1;
-     else     if ((digitalRead(BF) == 1) && (digitalRead(BR) == 0) ) //inainte
-     x=2;
-     else //default rotire stanga
-     x=0;
-     */
-
-
-    //////////////////////////
-
 
     /* end ifuri sharpuri */
     break;
   }
   switch (x){
-  case 1:
+    case 1:
     rotirestanga();
     break;
-  case 2:
+    case 2:
     rotiredreapta();
     break;
-  case 3:
+    case 3:
     inainte();
     break;
-  case 4:
+    case 4:
     rotirestanga_rapid();
-   delay(100);
     break;
-  case 5:
+    case 5:
     rotiredreapta_rapid();
-    delay(100);
     break;
-  case 6:
-    rotirestanga_rapid();
-    delay(100);
-    break;
-  default :
+    default :
     //drive(0,0);
     rotirestanga();
   }
