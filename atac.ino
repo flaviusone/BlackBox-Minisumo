@@ -1,7 +1,6 @@
 void atac()
 {
-  x=10;
-  xprec=10;
+
   
   while(1)
   {
@@ -9,17 +8,17 @@ void atac()
     /* ifuri sharpuri */
     if ((SL>pragsharp && SR>pragsharp)  || (digitalRead(BF) == 0) ) //inainte
     {  
-      x=3;
+      //x=3;
       break;
     }
     else if (SL>pragsharp && SR<pragsharp) //rotire stanga
     { 
-      x=1;
+      //x=1;
       break;
     }
     else if(SL<pragsharp && SR>pragsharp) //rotire dreapta
     {
-      x=2;
+      //x=2;
       break;
     }
     else //default rotire stanga
@@ -78,7 +77,7 @@ void atac()
     }
     else if (digitalRead(BB)==0 && xprec==10)
     {
-      x=6;
+      x=4;
       xprec=3;
       break;
     }
@@ -88,7 +87,8 @@ void atac()
   }
   switch (x){
     case 1:
-    rotirestanga();
+    drive(0,0);
+    //rotirestanga();
     break;
     case 2:
     rotiredreapta();

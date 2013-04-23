@@ -33,7 +33,7 @@
 #define viteza_inainte 100
 Old values before 
 */
-
+#define ajustare 40
 #define praglinie 650
 #define pragsharp 250
 
@@ -58,33 +58,47 @@ void setup()
     viteza = 100;
     viteza_rapid = 120;
     viteza_inainte = 120;
+    delay_BR=135-ajustare;
+    delay_BL=135-ajustare;
+    delay_BB=250-ajustare;
     break;
     case 1:
     viteza = 120;
     viteza_rapid = 140;
     viteza_inainte = 140;
+    delay_BR=115-ajustare;
+    delay_BL=115-ajustare;
+    delay_BB=210-ajustare;
     break;
     case 2:
     viteza = 140;
     viteza_rapid = 160;
+    delay_BR=100-ajustare;
+    delay_BL=100-ajustare;
+    delay_BB=185-ajustare;
+
     viteza_inainte = 160;
     break;
     case 3:
     viteza = 160;
     viteza_rapid = 180;
     viteza_inainte =180;
+    delay_BR=80-ajustare;
+    delay_BL=80-ajustare;
+    delay_BB=145-ajustare;
     break;
   }
+  x=10;
+  xprec=10;
   Serial.begin(9600);  /* debug */
   start();           /* start button */
-  //  delay(4000);
   
 }
 void loop()
 {
 
 
-/* Main Code
+/* Main Code */
   citire_linie();
   citire_sharp();
   if    ( (LFL < praglinie) || (LFR < praglinie) ) 
@@ -93,14 +107,24 @@ void loop()
     evitare_inainte();
   else
     atac();
-*/
 
+/*
+drive(0,0);
+
+if (digitalRead(BL)==0 && stop==0){
+  rotirestanga_rapid();
+  delay(delay_BB);
+  stop =  1;
+}
+
+drive(0,0);
+*/
 /* Debug Code*/
-  citire_linie();
+/*  citire_linie();
   citire_sharp();
   if    ( (LFL < praglinie) || (LFR < praglinie) ) {
     evitare_inapoi(); //evitare
-    drive(0,0);
+  
     stop=1;
   }
   else if ( (LBL < praglinie) || (LBR < praglinie) )   {
@@ -110,7 +134,7 @@ void loop()
   }
   else if (stop==0)
     inainte();
-
+*/
 
 }
 
