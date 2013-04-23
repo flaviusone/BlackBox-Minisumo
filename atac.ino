@@ -96,7 +96,7 @@ void atac()
     rotiredreapta();
     break;
     case 3:
-    inainte();
+    inainte_rapid();
     break;
     case 4:
     rotirestanga_rapid();

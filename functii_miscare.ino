@@ -5,7 +5,7 @@ void rotirestanga(){
   drive(-viteza,viteza);
 } 
 void inainte(){
-  drive(viteza_inainte+18,viteza_inainte);
+  drive(viteza+18,viteza);
 }
 void inapoi(){
   drive(-(viteza_inainte+18),-(viteza_inainte)); 
@@ -26,7 +26,10 @@ void evitare_inainte()
   delay(400);
   x = 6;
 }
-
+void inainte_rapid()
+{
+  drive(viteza_inainte+18,viteza_inainte);
+}
 void evitare_inapoi()
 {
   inapoi();

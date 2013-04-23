@@ -116,29 +116,26 @@ void loop()
   citire_linie();
   citire_sharp();
   if (LFL < praglinie) {
-    if( (LFL < praglinie) && (LFR < praglinie) )
-      evitare_inapoi(); //evitare
-    else
-      rotirestanga();
+    while(1){
+      drive(0,-viteza_inainte);
+      if ( (LBL < praglinie) || (LBR < praglinie) )  {
+        evitare_inainte();
+        break;
+      }
+    }
   }else if (LFR < praglinie){
-    if ( (LFL < praglinie) && (LFR < praglinie) )
-      evitare_inapoi(); //evitare
-    else
-      rotiredreapta();
+   while(1){
+    drive(-viteza_inainte,0);
+    if ( (LBL < praglinie) || (LBR < praglinie) )  {
+      evitare_inainte();
+      break;
+    }
   }
-  else if (LBL<praglinie){
-    if ( (LBL < praglinie) && (LBR < praglinie) )   
-      evitare_inainte();
-    else
-      rotiredreapta();
-  }else if (LBR<praglinie){
-    if ( (LBL < praglinie) && (LBR < praglinie) )   
-      evitare_inainte();
-    else
-      rotirestanga();
-  }else if(strat == 0)
+  else if ( (LBL < praglinie) || (LBR < praglinie) )   
+    evitare_inainte();
+  else if(strat == 0)
     atac();
-   else if (strat == 1) 
+  else if (strat == 1) 
     atac2();
 
 
