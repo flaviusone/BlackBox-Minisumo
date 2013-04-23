@@ -5,7 +5,7 @@ int strategy()
 	{
 		pin0 =  digitalRead(strat_pin_0);
 		pin1 =  digitalRead(strat_pin_1);
-		//pin2 =  digitalRead(strat_pin_2);
+		//pi2 =  digitalRead(strat_pin_2);
 	}
 	int strat = /*4 * digitalRead(strat_pin_2) +*/  2 * pin1 + 1 * pin0 ;
 	return strat;

@@ -25,8 +25,6 @@
 
 
 
-#define ledpin 10     /* care e??????? */
-
 /*
 #define viteza 80
 #define viteza_rapid 100
@@ -42,12 +40,16 @@ Old values before
 int SR,SL,LFR,LFL,LBR,LBL;
 int xprec,x,strat;
 int viteza,viteza_inainte,viteza_rapid;
-int delay_BL,delay_BR,delay_BB;
+int delay_BL,delay_BR,delay_BB,delay_inainte,delay_stanga,delay_cautare;
 
 unsigned long previousMillis1 = 0;
 unsigned long previousMillis2 = 0;
 unsigned long previousMillis3 = 0;
-int stop=0;
+unsigned long millis_inainte = 0;
+unsigned long millis_stanga = 0;
+unsigned long millis_rotire_stanga = 0;
+unsigned long millis_rotire_dreapta = 0;
+int stop=0,flag=0;
 void setup()
 {
   modpins();           /* set req pins as I/O */
@@ -55,27 +57,31 @@ void setup()
   strat = strategy();
   switch(strat){
     case 0:
+    
     viteza = 100;
     viteza_rapid = 120;
     viteza_inainte = 120;
-    delay_BR=135-ajustare;
-    delay_BL=135-ajustare;
-    delay_BB=250-ajustare;
+    
+    delay_inainte = 400;
+    delay_stanga = 300;
+    delay_cautare = 2000;
+
+    //debug
+    /*
+    viteza = 50;
+    viteza_rapid = 70;
+    viteza_inainte = 70;
+    */
+    //debug
     break;
     case 1:
     viteza = 120;
     viteza_rapid = 140;
     viteza_inainte = 140;
-    delay_BR=115-ajustare;
-    delay_BL=115-ajustare;
-    delay_BB=210-ajustare;
     break;
     case 2:
     viteza = 140;
     viteza_rapid = 160;
-    delay_BR=100-ajustare;
-    delay_BL=100-ajustare;
-    delay_BB=185-ajustare;
 
     viteza_inainte = 160;
     break;
@@ -83,12 +89,9 @@ void setup()
     viteza = 160;
     viteza_rapid = 180;
     viteza_inainte =180;
-    delay_BR=80-ajustare;
-    delay_BL=80-ajustare;
-    delay_BB=145-ajustare;
     break;
   }
-  x=10;
+  x=6;
   xprec=10;
   Serial.begin(9600);  /* debug */
   start();           /* start button */
