@@ -75,10 +75,21 @@ void setup()
     //debug
     break;
     case 1:
+    viteza = 100;
+    viteza_rapid = 120;
+    viteza_inainte = 120;
+    
+    delay_inainte = 400;
+    delay_stanga = 300;
+    delay_cautare = 2000;
+    break;
+    /*
+    case 1:
     viteza = 120;
     viteza_rapid = 140;
     viteza_inainte = 140;
     break;
+    */
     case 2:
     viteza = 140;
     viteza_rapid = 160;
@@ -125,8 +136,11 @@ void loop()
       evitare_inainte();
     else
       rotirestanga();
-  }else
-  atac();
+  }else if(strat == 0)
+    atac();
+   else if (strat == 1) 
+    atac2();
+
 
 /*
 drive(0,0);
