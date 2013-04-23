@@ -4,6 +4,10 @@
 #define ms2 3
 #define ms1 11
 
+#define strat_pin_0
+#define strat_pin_1
+#define strat_pin_2
+
 #define pin_LFR 0
 #define pin_LFL 1
 #define pin_LBR 2
@@ -27,7 +31,7 @@
 #define praglinie 650
 #define pragsharp 250
 
-#define valoare_delay 300
+#define valoare_delay 1000
 /*--------- Defines end ---------*/
 int SR,SL,LFR,LFL,LBR,LBL;
 int xprec,x;
@@ -57,30 +61,16 @@ void loop()
   citire_linie();
   citire_sharp();
   if    ( (LFL < praglinie) || (LFR < praglinie) ) 
-    
-    /* Millis part 
-    if(millis()  - previousMillis1 > valoare_delay)
-    {
-      inapoi();
-      previousMillis = millis();
-    }
-    */
     evitare_inapoi(); //evitare
-    else if ( (LBL < praglinie) || (LBR < praglinie) )   
-    /* Millis part 
-    if(millis()  - previousMillis2 > valoare_delay)
-    {
-      inainte();
-      previousMillis2 = millis();
-    }
-    */
+  else if ( (LBL < praglinie) || (LBR < praglinie) )   
     evitare_inainte();
-    else
-      atac();
-    
+  else
+    atac();
 
 
-  }
+
+
+}
 
 
 

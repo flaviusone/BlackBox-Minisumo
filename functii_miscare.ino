@@ -5,10 +5,10 @@ void rotirestanga(){
   drive(-viteza,viteza);
 } 
 void inainte(){
-  drive(viteza_inainte,viteza_inainte);
+  drive(viteza_inainte+18,viteza_inainte);
 }
 void inapoi(){
-  drive(-(viteza_inainte+40),-(viteza_inainte+40)); 
+  drive(-(viteza_inainte+58),-(viteza_inainte+40)); 
 }
 void rotiredreapta_rapid()
 {
