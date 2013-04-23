@@ -22,13 +22,21 @@
 #define ledpin 10     /* care e??????? */
 
 #define viteza 80
-#define viteza_rapid 170
-#define viteza_inainte 170
+#define viteza_rapid 100
+#define viteza_inainte 100
 #define praglinie 650
 #define pragsharp 250
+
+#define valoare_delay 300
 /*--------- Defines end ---------*/
 int SR,SL,LFR,LFL,LBR,LBL;
 int xprec,x;
+
+
+unsigned long previousMillis1 = 0;
+unsigned long previousMillis2 = 0;
+unsigned long previousMillis3 = 0;
+
 void setup()
 {
   modpins();           /* set req pins as I/O */
@@ -39,20 +47,40 @@ void setup()
 }
 void loop()
 {
-//  inainte();
+/*
+  inainte();
+  delay(500);
+  inapoi();
+  delay(300);
+*/
 
   citire_linie();
   citire_sharp();
-  if    ( (LFL < praglinie) || (LFR < praglinie) )   
+  if    ( (LFL < praglinie) || (LFR < praglinie) ) 
+    
+    /* Millis part 
+    if(millis()  - previousMillis1 > valoare_delay)
+    {
+      inapoi();
+      previousMillis = millis();
+    }
+    */
     evitare_inapoi(); //evitare
-  else if ( (LBL < praglinie) || (LBR < praglinie) )   
+    else if ( (LBL < praglinie) || (LBR < praglinie) )   
+    /* Millis part 
+    if(millis()  - previousMillis2 > valoare_delay)
+    {
+      inainte();
+      previousMillis2 = millis();
+    }
+    */
     evitare_inainte();
-  else
-    atac();
- 
+    else
+      atac();
+    
 
 
-}
+  }
 
 
 
