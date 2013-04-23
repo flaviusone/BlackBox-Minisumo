@@ -22,13 +22,15 @@ void rotire_180 ()
 {}
 void evitare_inainte()
 {
-  inainte();
+  drive(viteza_rapid,viteza_rapid);
+  //inainte();
   delay(300);
 }
 
 void evitare_inapoi()
 {
-  inapoi();
+  drive(-viteza_rapid,-viteza_rapid);
+  //inapoi();
   delay(300);
 }
 
