@@ -9,7 +9,10 @@ void atac()
     if ((SL>pragsharp && SR>pragsharp)  || (digitalRead(BF) == 0) ) //inainte
     {  
       flag=1;
-      x=3;
+      if (digitalRead(BF) == 0)
+      {
+        x = 3; //inainte rapid
+      }else x=7; //inainte normal
       xprec=10;
       break;
     }
@@ -116,6 +119,9 @@ void atac()
       inainte();
       millis_stanga = millis();
     }
+    break;
+    case 7:
+    inainte();
     break;
     default :
     //drive(0,0);

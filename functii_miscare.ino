@@ -23,7 +23,7 @@ void rotire_180 ()
 void evitare_inainte()
 {
   inainte();
-  delay(400);
+  delay(200);
   x = 6;
 }
 void inainte_rapid()

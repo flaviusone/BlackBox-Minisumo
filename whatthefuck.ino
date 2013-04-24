@@ -59,9 +59,9 @@ void setup()
   switch(strat){
     case 0:
     
-    viteza = 110;
-    viteza_rapid = 130;
-    viteza_inainte = 130;
+    viteza = 100;
+    viteza_rapid = 120;
+    viteza_inainte = 120;
     
     delay_inainte = 400;
     delay_stanga = 300;
@@ -76,29 +76,29 @@ void setup()
     //debug
     break;
     case 1:
-    viteza = 110;
-    viteza_rapid = 130;
-    viteza_inainte = 130;
+    viteza = 100;
+    viteza_rapid = 120;
+    viteza_inainte = 120;
     
     delay_inainte = 400;
     delay_stanga = 250;
     delay_cautare = 500;
     break;
     case 2:
-    viteza = 145;
-    viteza_rapid = 165;
-    viteza_inainte = 165;
+    viteza = 120;
+    viteza_rapid = 140;
+    viteza_inainte = 140;
 
-    delay_inainte = 400;
+    delay_inainte = 300;
     delay_stanga = 250;
     delay_cautare = 500;
     break;
     case 3:
-    viteza = 170;
-    viteza_rapid = 190;
-    viteza_inainte =190;
+    viteza = 140;
+    viteza_rapid = 160;
+    viteza_inainte =160;
 
-    delay_inainte = 400;
+    delay_inainte = 300;
     delay_stanga = 250;
     delay_cautare = 500;
     break;
@@ -120,11 +120,13 @@ void loop()
   if (LFL < praglinie) {
     drive(-viteza_inainte,-viteza_inainte-50);
     delay(400);
+    millis_inainte+=400;
 
   }
   else if (LFR < praglinie){
     drive(-viteza_inainte-50,-viteza_inainte);
     delay(400);
+    millis_inainte+=400;
 
   }
   else if ( (LBL < praglinie) || (LBR < praglinie) )   
