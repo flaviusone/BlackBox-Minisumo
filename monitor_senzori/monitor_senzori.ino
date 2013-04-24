@@ -29,7 +29,7 @@ void loop()
   SR = analogRead(4);
   SL = analogRead(5);
 
-
+/*
   Serial.print("LFR ");
   Serial.print(LFR);
   Serial.print("     LFL ");
@@ -38,7 +38,7 @@ void loop()
   Serial.print(LBR);
   Serial.print("           LBL ");
   Serial.println(LBL);
-
+*/
  /* 
    //citire Bannere
    BB =  digitalRead(10);
@@ -55,13 +55,13 @@ void loop()
    Serial.println(BB);
   */
   
-  /*
+  
    //citire sharp
    Serial.print("Sharp dreapta "); 
    Serial.print(SR);
    Serial.print("   Sharp stanga "); 
    Serial.println(SL);
-  */
+  
 
 
 

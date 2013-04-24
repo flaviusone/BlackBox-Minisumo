@@ -33,7 +33,7 @@ Old values before
 */
 #define ajustare 40
 #define praglinie 650
-#define pragsharp 250
+#define pragsharp 275
 
 #define valoare_delay 1000
 /*--------- Defines end ---------*/
@@ -49,6 +49,7 @@ unsigned long millis_inainte = 0;
 unsigned long millis_stanga = 0;
 unsigned long millis_rotire_stanga = 0;
 unsigned long millis_rotire_dreapta = 0;
+unsigned long millis_linie = 0;
 int stop=0,flag=0;
 void setup()
 {
@@ -58,13 +59,13 @@ void setup()
   switch(strat){
     case 0:
     
-    viteza = 100;
-    viteza_rapid = 120;
-    viteza_inainte = 120;
+    viteza = 110;
+    viteza_rapid = 130;
+    viteza_inainte = 130;
     
     delay_inainte = 400;
     delay_stanga = 300;
-    delay_cautare = 2000;
+    delay_cautare = 500;
 
     //debug
     /*
@@ -75,37 +76,38 @@ void setup()
     //debug
     break;
     case 1:
-    viteza = 100;
-    viteza_rapid = 120;
-    viteza_inainte = 120;
+    viteza = 110;
+    viteza_rapid = 130;
+    viteza_inainte = 130;
     
     delay_inainte = 400;
-    delay_stanga = 300;
-    delay_cautare = 2000;
+    delay_stanga = 250;
+    delay_cautare = 500;
     break;
-    /*
-    case 1:
-    viteza = 120;
-    viteza_rapid = 140;
-    viteza_inainte = 140;
-    break;
-    */
     case 2:
-    viteza = 140;
-    viteza_rapid = 160;
+    viteza = 145;
+    viteza_rapid = 165;
+    viteza_inainte = 165;
 
-    viteza_inainte = 160;
+    delay_inainte = 400;
+    delay_stanga = 250;
+    delay_cautare = 500;
     break;
     case 3:
-    viteza = 160;
-    viteza_rapid = 180;
-    viteza_inainte =180;
+    viteza = 170;
+    viteza_rapid = 190;
+    viteza_inainte =190;
+
+    delay_inainte = 400;
+    delay_stanga = 250;
+    delay_cautare = 500;
     break;
   }
   x=6;
   xprec=10;
   Serial.begin(9600);  /* debug */
   start();           /* start button */
+  //Serial.println(strat);
   
 }
 void loop()
@@ -116,27 +118,23 @@ void loop()
   citire_linie();
   citire_sharp();
   if (LFL < praglinie) {
-    while(1){
-      drive(0,-viteza_inainte);
-      if ( (LBL < praglinie) || (LBR < praglinie) )  {
-        evitare_inainte();
-        break;
-      }
-    }
-  }else if (LFR < praglinie){
-   while(1){
-    drive(-viteza_inainte,0);
-    if ( (LBL < praglinie) || (LBR < praglinie) )  {
-      evitare_inainte();
-      break;
-    }
+    drive(-viteza_inainte,-viteza_inainte-50);
+    delay(400);
+
+  }
+  else if (LFR < praglinie){
+    drive(-viteza_inainte-50,-viteza_inainte);
+    delay(400);
+
   }
   else if ( (LBL < praglinie) || (LBR < praglinie) )   
     evitare_inainte();
-  else if(strat == 0)
+  else if (strat == 0)
     atac();
   else if (strat == 1) 
     atac2();
+  else atac();
+
 
 
 /*
