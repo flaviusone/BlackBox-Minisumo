@@ -53,3 +53,8 @@ void Motors::go_fwd(){
 	pwm_left(-512);
 	pwm_right(512);
 }
+
+void Motors::drive(int16_t stanga, int16_t dreapta){
+	pwm_left(stanga);;
+	pwm_right(dreapta);
+}
