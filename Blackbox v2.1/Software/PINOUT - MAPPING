@@ -1,6 +1,6 @@
 PINOUT - MAPPING
 
-BS			-	digital 12
+BS			-	digital 4
 BD			-	digital 2
 LS			-	analog 2 - digital 16
 LD			-	analog 3 - digital 17
