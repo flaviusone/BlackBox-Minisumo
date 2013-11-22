@@ -8,7 +8,23 @@ void atac_0(){
 				motors.setSpeeds(0,0);
 		}
 
-	
-
+		//motors.setSpeeds(100,100);
+		citire_linie();
+		citire_banner();
+		if(LS<praglinie || LD<praglinie)
+		 {
+		 	motors.setSpeeds(-100,-100);
+		 	delay(300);
+		 	motors.setSpeeds(-100,100);
+		 	delay(500);
+		 }
+		 if(BS && BD)
+		 	motors.setSpeeds(200,200);
+		 else if(BS && !BD)
+		 	motors.setSpeeds(100,-100);
+		 else if(!BS && BD)
+		 	motors.setSpeeds(-100,100);
+		 else
+		 	motors.setSpeeds(0,0);
 	}
 }
