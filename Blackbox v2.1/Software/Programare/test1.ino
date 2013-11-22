@@ -19,14 +19,20 @@ Strategy1 	-	digital 8
 Strategy2 	-	digital 9
 Strategy3 	-	digital 10
 */
+
+// Include motor controll lib
+#include <OrangutanMotors.h>
+
+// Define pins
 #define _BS 4
 #define _BD 2
 #define _SS 1
-#define _SD 2
-int i,BS,BD;
-float SHS,SHD;
-char buff[20];
-
+#define _SD 0
+#define _LS 2
+#define _LD 3
+#define _S1 8
+#define _S2 9
+#define _S3 10
 
 void setup () {
 
