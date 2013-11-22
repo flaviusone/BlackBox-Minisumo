@@ -36,7 +36,6 @@ void start()
 {
 	while(1){
 		if ((digitalRead(_Start)==1) && (digitalRead(_Kill)==1)){
-			running = 1;
 			break;
 		}
 	}

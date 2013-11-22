@@ -35,8 +35,9 @@ OrangutanMotors motors;
 #define _S3 10
 #define _Start A4
 #define _Kill A5
+#define praglinie 850
 int strategie;
-int running=0;
+int i,BS = 0,BD = 0, LS = 0, LD = 0;
 void setup () {
 
   	modpins();   //???        /* set req pins as I/O */

@@ -30,7 +30,7 @@ Strategy3 	-	digital 10
 #define _S3 10
 
 int i,BS,BD,S1,S2,S3;
-float SHS,SHD,LS,LD;
+float SHS,SHD,LS=0,LD=0;
 char buff[20];
 
 void setup(){
@@ -39,16 +39,16 @@ void setup(){
 	//for(i = 0 ; i<19 ; i++)
 	//	pinMode(i,INPUT);
 	pinMode(_S1, INPUT_PULLUP);
-	pinMode(_S2, INPUT_PULLUP);
-	pinMode(_S3, INPUT_PULLUP);
+   pinMode(_S2, INPUT_PULLUP);
+   pinMode(_S3, INPUT_PULLUP);
     Serial.begin(9600);
 }
  
 void loop(){
   
    //citire Bannere
-   BS = digitalRead(_BS);
-   BD = digitalRead(_BD);
+   // BS = digitalRead(_BS);
+   // BD = digitalRead(_BD);
    //sprintf(buff,"BS 	%d BD  	%d \n",BS,BD);
    //Serial.print(buff);
 
@@ -60,26 +60,30 @@ void loop(){
    // Serial.print("	SHD	");
    // Serial.println(SHD);
 
-   /*
-   //citire senzori linie lateral
-   LS = analogRead(_LS);
-   LD = analogRead(_LD);
+   
+   //citire senzori linie
+   LS=0;LD=0;
+   for(i=0;i<10;i++){
+      LS += analogRead(_LS);
+      LD += analogRead(_LD);
+   }
+   LS /=10;LD/=10;
    Serial.print("LS	");
    Serial.print(LS);
    Serial.print("	LD	");
    Serial.println(LD);
-   */
+   
 
-   //citire switch strategie
-   for(i=0;i<10;i++){
-	   S1 = digitalRead(_S1);
-	   S2 = digitalRead(_S2);	
-	   S3 = digitalRead(_S3);
-	}
-   sprintf(buff,"S1 	%d 	S2  	%d 	S3  	%d \n",S1,S2,S3);
-   Serial.print(buff);
+ //   //citire switch strategie
+ //   for(i=0;i<10;i++){
+	//    S1 = digitalRead(_S1);
+	//    S2 = digitalRead(_S2);	
+	//    S3 = digitalRead(_S3);
+	// }
+ //   sprintf(buff,"S1 	%d 	S2  	%d 	S3  	%d \n",S1,S2,S3);
+ //   Serial.print(buff);
 
-   delay(50);
+   delay(500);
 
 }
 
