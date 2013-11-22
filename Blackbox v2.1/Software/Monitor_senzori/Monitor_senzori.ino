@@ -36,9 +36,11 @@ char buff[20];
 void setup(){
 
 	// Setam pini ca input
-	for(i = 0 ; i<19 ; i++)
-		pinMode(i,INPUT);
-
+	//for(i = 0 ; i<19 ; i++)
+	//	pinMode(i,INPUT);
+	pinMode(_S1, INPUT_PULLUP);
+	pinMode(_S2, INPUT_PULLUP);
+	pinMode(_S3, INPUT_PULLUP);
     Serial.begin(9600);
 }
  
@@ -69,13 +71,15 @@ void loop(){
    */
 
    //citire switch strategie
-   S1 = digitalRead(_S1);
-   S2 = digitalRead(_S2);
-   S3 = digitalRead(_S3);
+   for(i=0;i<10;i++){
+	   S1 = digitalRead(_S1);
+	   S2 = digitalRead(_S2);	
+	   S3 = digitalRead(_S3);
+	}
    sprintf(buff,"S1 	%d 	S2  	%d 	S3  	%d \n",S1,S2,S3);
    Serial.print(buff);
 
-   delay(1000);
+   delay(50);
 
 }
 
