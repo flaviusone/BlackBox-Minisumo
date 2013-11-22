@@ -22,9 +22,15 @@ Strategy3 	-	digital 10
 #define _BS 4
 #define _BD 2
 #define _SS 1
-#define _SD 2
-int i,BS,BD;
-float SHS,SHD;
+#define _SD 0
+#define _LS 2
+#define _LD 3
+#define _S1 8
+#define _S2 9
+#define _S3 10
+
+int i,BS,BD,S1,S2,S3;
+float SHS,SHD,LS,LD;
 char buff[20];
 
 void setup(){
@@ -44,13 +50,30 @@ void loop(){
    //sprintf(buff,"BS 	%d BD  	%d \n",BS,BD);
    //Serial.print(buff);
 
-   //citire sharp lateral
-   SHS = analogRead(_SS);
-   SHD = analogRead(_SD);
-   Serial.println(SHS);
-   Serial.println(SHD);
-   //sprintf(buff,"SHS 	%f SHD  	%f \n",SHS,SHD);
-   //Serial.print(buff);
+   // //citire sharp lateral
+   // SHS = analogRead(_SS);
+   // SHD = analogRead(_SD);
+   // Serial.print("SHS	");
+   // Serial.print(SHS);
+   // Serial.print("	SHD	");
+   // Serial.println(SHD);
+
+   /*
+   //citire senzori linie lateral
+   LS = analogRead(_LS);
+   LD = analogRead(_LD);
+   Serial.print("LS	");
+   Serial.print(LS);
+   Serial.print("	LD	");
+   Serial.println(LD);
+   */
+
+   //citire switch strategie
+   S1 = digitalRead(_S1);
+   S2 = digitalRead(_S2);
+   S3 = digitalRead(_S3);
+   sprintf(buff,"S1 	%d 	S2  	%d 	S3  	%d \n",S1,S2,S3);
+   Serial.print(buff);
 
    delay(1000);
 
