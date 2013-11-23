@@ -1,9 +1,10 @@
-void atac_0(){
+// Functia de atac de baza
+void atac_7(){
 	viteza_inainte = 190; 
 	viteza = 150; 
 	viteza_rapid = 200; 
 	val_delay = 100;
-	flag_d=1;
+	flag_d=0;
 	while(1){
 
 		// Check Stop
@@ -78,13 +79,13 @@ void atac_0(){
 	 			break;
 		 	default:
 		 		if(flag_d==1)
-		 			motors.setSpeeds(51,255);
+		 			//motors.setSpeeds(51,255);
 		 			//motors.setSpeeds(10,255);
-		 			//motors.setSpeeds(-200,200);
+		 			motors.setSpeeds(-200,200);
 		 		else
-		 			motors.setSpeeds(255,51);
+		 			//motors.setSpeeds(255,51);
 		 			//motors.setSpeeds(255,10);
-					//motors.setSpeeds(-200,200);		 			
+					motors.setSpeeds(-200,200);		 			
 		 		//motors.setSpeeds(-150,150);
 		 		//motors.setSpeeds(0,0);
 		 }

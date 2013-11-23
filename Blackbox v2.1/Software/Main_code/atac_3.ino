@@ -1,9 +1,10 @@
-void atac_0(){
-	viteza_inainte = 190; 
-	viteza = 150; 
-	viteza_rapid = 200; 
-	val_delay = 100;
-	flag_d=1;
+// Functia de atac de baza
+void atac_3(){
+	viteza_inainte = 230; 
+	viteza = 190; 
+	viteza_rapid = 230; 
+	val_delay = 80;
+	flag_d=0;
 	while(1){
 
 		// Check Stop

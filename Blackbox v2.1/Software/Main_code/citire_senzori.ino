@@ -35,8 +35,20 @@ void citire_banner() {
 
 
 void citire_sharp() {
-	//tu stii mai bine aici
-	//I got confused
+	SHS = 0;
+	SHD = 0;
+	for(i=0;i<6;i++){
+		SHS += digitalRead(_SHS);
+		SHD += digitalRead(_SHD);
+	}
+	if(SHS>3) 
+		SHS=0;
+	else
+		SHS=1;
+	if(SHD>3)
+		SHD=0;
+	else
+		SHD=1;
 }
 
 void citire_linie() {

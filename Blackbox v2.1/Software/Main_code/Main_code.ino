@@ -26,8 +26,8 @@ OrangutanMotors motors;
 // Define pins
 #define _BS 4
 #define _BD 2
-#define _SS 1
-#define _SD 0
+#define _SHS A1
+#define _SHD A0
 #define _LS 2
 #define _LD 3
 #define _S1 8
@@ -37,42 +37,46 @@ OrangutanMotors motors;
 #define _Kill A5
 #define praglinie 850
 int strategie;
-int i,BS = 0,BD = 0, LS = 0, LD = 0;
+int viteza_inainte,viteza,viteza_rapid,val_delay;
+int i,BS = 0,BD = 0,SHD=0,SHS=0,x,flag_lateral,flag_d;
+float LS = 0, LD = 0;
+unsigned long m_lateral;
 void setup () {
 
   	modpins();   //???        /* set req pins as I/O */
-
-	strategie = strategy(); //
-	Serial.begin(9600);
-	switch(strategie) {
-		case 0: 
-		break;
-		case 1: 
-		break;
-		case 2: 
-		break;
-		case 3: 
-		break;
-	}
-
+  	strategie = strategy();
 	start();
+	//delay(2000);
 }
 
 void loop () {
 	switch(strategie) {
+
 		case 0:
 		atac_0();
 		break;
-		case 1: 
-		break;
 		case 2: 
+		atac_2();
+		break;
+		case 4: 
+		atac_4();
+		break;
+		case 6: 
+		atac_6();
+		break;
+
+		case 1: 
+		atac_1();
 		break;
 		case 3: 
+		atac_3();
 		break;
-	}
+		case 5: 
+		atac_5();
+		break;
+		case 7:
+		atac_7();
+		break;
 
-	//citire_linie();
-	//citire_sharp();
-	//citire_banner();
-	delay(100);
+	}
 }

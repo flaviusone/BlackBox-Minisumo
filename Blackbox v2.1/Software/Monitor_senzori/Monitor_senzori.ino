@@ -21,8 +21,8 @@ Strategy3 	-	digital 10
 */
 #define _BS 4
 #define _BD 2
-#define _SS 1
-#define _SD 0
+#define _SHS A1
+#define _SHD A0
 #define _LS 2
 #define _LD 3
 #define _S1 8
@@ -31,16 +31,17 @@ Strategy3 	-	digital 10
 
 int i,BS,BD,S1,S2,S3;
 float SHS,SHD,LS=0,LD=0;
+unsigned long previousMillis_SHARP = 0;
 char buff[20];
 
 void setup(){
 
 	// Setam pini ca input
-	//for(i = 0 ; i<19 ; i++)
-	//	pinMode(i,INPUT);
-	pinMode(_S1, INPUT_PULLUP);
-   pinMode(_S2, INPUT_PULLUP);
-   pinMode(_S3, INPUT_PULLUP);
+	for(i = 0 ; i<19 ; i++)
+		pinMode(i,INPUT);
+	// pinMode(_S1, INPUT_PULLUP);
+ //   pinMode(_S2, INPUT_PULLUP);
+ //   pinMode(_S3, INPUT_PULLUP);
     Serial.begin(9600);
 }
  
@@ -62,16 +63,22 @@ void loop(){
 
    
    //citire senzori linie
-   LS=0;LD=0;
-   for(i=0;i<10;i++){
-      LS += analogRead(_LS);
-      LD += analogRead(_LD);
-   }
-   LS /=10;LD/=10;
-   Serial.print("LS	");
-   Serial.print(LS);
-   Serial.print("	LD	");
-   Serial.println(LD);
+   // LS=0;LD=0;
+   // for(i=0;i<10;i++){
+   //    LS += analogRead(_LS);
+   //    LD += analogRead(_LD);
+   // }
+   // LS /=10;LD/=10;
+   // Serial.print("LS	");
+   // Serial.print(LS);
+   // Serial.print("	LD	");
+   // Serial.println(LD);
+   SHS = digitalRead(_SHS);
+   SHD = digitalRead(_SHD);
+     Serial.print("SHS  ");
+   Serial.print(SHS);
+   Serial.print(" SHD ");
+   Serial.println(SHD);
    
 
  //   //citire switch strategie

@@ -1,4 +1,5 @@
-void atac_0(){
+// Functia de atac de baza
+void atac_4(){
 	viteza_inainte = 190; 
 	viteza = 150; 
 	viteza_rapid = 200; 
