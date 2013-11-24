@@ -40,7 +40,7 @@ int strategie;
 int viteza_inainte,viteza,viteza_rapid,val_delay;
 int i,BS = 0,BD = 0,SHD=0,SHS=0,x,flag_lateral,flag_d;
 float LS = 0, LD = 0;
-unsigned long m_lateral;
+unsigned long m_lateral,m_inainte,m_rotire;
 void setup () {
 
   	modpins();   //???        /* set req pins as I/O */

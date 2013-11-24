@@ -8,7 +8,8 @@ void atac_2(){
 	while(1){
 
 		// Check Stop
-		if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
+		//if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
+		if (digitalRead(_Start)==0){
 			//kill motors
 			while(1)
 				motors.setSpeeds(0,0);
@@ -18,7 +19,15 @@ void atac_2(){
 		citire_linie();
 		citire_banner();
 		citire_sharp();
-		if(LS<praglinie || LD<praglinie){
+		if(LS<praglinie && LD>praglinie){
+		 	x = 11;
+		 	flag_lateral=0;
+		 }
+		 else if(LS>praglinie && LD<praglinie){
+		 	x = 10;
+		 	flag_lateral=0;
+		 }
+		 else if(LS<praglinie && LD<praglinie){
 		 	x = 1;
 		 	flag_lateral=0;
 		 }
@@ -76,6 +85,12 @@ void atac_2(){
 	 			break;
 	 		case 6:
 	 			rotirestanga_rapid();
+	 			break;
+	 		case 10:
+		 		evitare_inapoi_arc_stanga();
+		 		break;
+	 		case 11:
+	 			evitare_inapoi_arc_dreapta();
 	 			break;
 		 	default:
 		 		if(flag_d==1)

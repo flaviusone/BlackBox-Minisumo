@@ -4,6 +4,14 @@ void rotiredreapta(){
 void rotirestanga(){
   motors.setSpeeds(-viteza,viteza);
 } 
+
+void rotiredreapta_arc(){
+  motors.setSpeeds(viteza,0);
+} 
+void rotirestanga_arc(){
+  motors.setSpeeds(0,viteza);
+} 
+
 void inainte(){
   motors.setSpeeds(viteza,viteza);
 }
@@ -34,5 +42,24 @@ void evitare_inapoi()
   //delay(100);
   //x = 6;
 }
-
+void evitare_inapoi_arc_stanga()
+{
+  motors.setSpeeds(-250,0); 
+  delay(100);
+  motors.setSpeeds(-150,-150+10); 
+  delay(100);
+  //rotiredreapta_rapid();
+  //delay(100);
+  //x = 6;
+}
+void evitare_inapoi_arc_dreapta()
+{
+  motors.setSpeeds(0,-250); 
+  delay(100);
+  motors.setSpeeds(-150,-150+10); 
+  delay(200);
+  //rotiredreapta_rapid();
+  //delay(100);
+  //x = 6;
+}
 

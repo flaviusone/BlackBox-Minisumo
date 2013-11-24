@@ -8,7 +8,8 @@ void atac_1(){
 	while(1){
 
 		// Check Stop
-		if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
+		//if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
+		if (digitalRead(_Start)==0){
 			//kill motors
 			while(1)
 				motors.setSpeeds(0,0);
@@ -18,7 +19,15 @@ void atac_1(){
 		citire_linie();
 		citire_banner();
 		citire_sharp();
-		if(LS<praglinie || LD<praglinie){
+		if(LS<praglinie && LD>praglinie){
+		 	x = 11;
+		 	flag_lateral=0;
+		 }
+		 else if(LS>praglinie && LD<praglinie){
+		 	x = 10;
+		 	flag_lateral=0;
+		 }
+		 else if(LS<praglinie && LD<praglinie){
 		 	x = 1;
 		 	flag_lateral=0;
 		 }
@@ -77,14 +86,20 @@ void atac_1(){
 	 		case 6:
 	 			rotirestanga_rapid();
 	 			break;
+	 		case 10:
+		 		evitare_inapoi_arc_stanga();
+		 		break;
+	 		case 11:
+	 			evitare_inapoi_arc_dreapta();
+	 			break;
 		 	default:
 		 		if(flag_d==1)
-		 			motors.setSpeeds(51,255);
-		 			//motors.setSpeeds(10,255);
+		 			//motors.setSpeeds(51,255);
+		 			motors.setSpeeds(10,255);
 		 			//motors.setSpeeds(-200,200);
 		 		else
-		 			motors.setSpeeds(255,51);
-		 			//motors.setSpeeds(255,10);
+		 			//motors.setSpeeds(255,51);
+		 			motors.setSpeeds(255,10);
 					//motors.setSpeeds(-200,200);		 			
 		 		//motors.setSpeeds(-150,150);
 		 		//motors.setSpeeds(0,0);
