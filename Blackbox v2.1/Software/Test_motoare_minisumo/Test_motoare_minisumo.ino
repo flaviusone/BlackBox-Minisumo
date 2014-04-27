@@ -63,8 +63,8 @@ void loop()
    //digitalWrite(md2,LOW);
    motors.setSpeeds(200,200);
      delay(1000);
-    motors.setSpeeds(-200,-200);
-     delay(1000);
+//    motors.setSpeeds(-200,-200);
+//     delay(1000);
 }
 
 

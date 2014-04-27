@@ -29,23 +29,23 @@ void citire_banner() {
 	// }
 	// BS /= 10;
 	// BD /= 10;
-	BS = 1-digitalRead(_BS);
-	BD = 1-digitalRead(_BD);
+	BS = digitalRead(_BS);
+	BD = digitalRead(_BD);
 }
 
 
 void citire_sharp() {
 	SHS = 0;
 	SHD = 0;
-	for(i=0;i<6;i++){
+	for(i=0;i<12;i++){
 		SHS += digitalRead(_SHS);
 		SHD += digitalRead(_SHD);
 	}
-	if(SHS>3) 
+	if(SHS>6) 
 		SHS=0;
 	else
 		SHS=1;
-	if(SHD>3)
+	if(SHD>6)
 		SHD=0;
 	else
 		SHD=1;

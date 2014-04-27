@@ -24,10 +24,10 @@ Strategy3 	-	digital 10
 #include <OrangutanMotors.h>
 OrangutanMotors motors;
 // Define pins
-#define _BS 4
-#define _BD 2
-#define _SHS A1
-#define _SHD A0
+#define _BS 2
+#define _BD 4
+#define _SHS A0
+#define _SHD A1
 #define _LS 2
 #define _LD 3
 #define _S1 8
@@ -40,9 +40,8 @@ int strategie;
 int viteza_inainte,viteza,viteza_rapid,val_delay;
 int i,BS = 0,BD = 0,SHD=0,SHS=0,x,flag_lateral,flag_d;
 float LS = 0, LD = 0;
-unsigned long m_lateral,m_inainte,m_rotire;
+unsigned long m_lateral,m_inainte,m_rotire,m_lat_delay,m_lat_delay_old_dr,m_lat_delay_old_st;
 void setup () {
-
   	modpins();   //???        /* set req pins as I/O */
   	strategie = strategy();
 	start();
