@@ -1,40 +1,40 @@
 /*
- Blackbox v2.1 Debug file
-
-PINOUT - MAPPING
-
-BS			-	digital 4
-BD			-	digital 2
-LS			-	analog 2 - digital 16
-LD			-	analog 3 - digital 17
-SS 			-	analog 1 - digital 15
-SD			-	analog 0 - digital 14
-IR - Start 	-	analog 4 - digital 17
-IR - Kill 	-	analog 5 - digital 18
-M1.1 		-	digital 3
-M1.2		-	digital 11
-M2.1 		-	digital 5
-M2.2 		-	digital 6
-Strategy1 	-	digital 8
-Strategy2 	-	digital 9
-Strategy3 	-	digital 10
-*/
+ Blackbox vPro Debug file
+ 
+ PINOUT - MAPPING
+ 
+ BS			-	digital 12
+ BD			-	digital 8
+ LS			-	analog 0 
+ LD			-	analog 1 
+ SS 		-	digital 10
+ SD			-	digital 9
+ IR - Start 	-	analog 2 - digital 16
+ IR - Kill 	-	analog 3 - digital 17
+ M1.1 		-	digital 3
+ M1.2		-	digital 11
+ M2.1 		-	digital 5
+ M2.2 		-	digital 6
+ Strategy1 	-	digital 7
+ Strategy2 	-	digital 4
+ Strategy3 	-	digital 2
+ */
 
 // Include motor controll lib
 #include <OrangutanMotors.h>
 OrangutanMotors motors;
 // Define pins
-#define _BS 2
-#define _BD 4
-#define _SHS A0
-#define _SHD A1
-#define _LS 2
-#define _LD 3
-#define _S1 8
-#define _S2 9
-#define _S3 10
-#define _Start A4
-#define _Kill A5
+#define _BS 12
+#define _BD 8
+#define _SHS 10
+#define _SHD 9
+#define _LS 0
+#define _LD 1
+#define _S1 7
+#define _S2 4
+#define _S3 2
+#define _Start 16
+#define _Kill 17
 #define praglinie 850
 int strategie;
 int viteza_inainte,viteza,viteza_rapid,val_delay;
@@ -43,39 +43,41 @@ float LS = 0, LD = 0;
 unsigned long m_lateral,m_inainte,m_rotire,m_lat_delay,m_lat_delay_old_dr,m_lat_delay_old_st;
 void setup () {
   	modpins();   //???        /* set req pins as I/O */
-  	strategie = strategy();
+  	// strategie = strategy();
+  	strategie = 0;
 	start();
 	//delay(2000);
 }
 
 void loop () {
-	switch(strategie) {
+	atac_0();
+	// switch(strategie) {
 
-		case 0:
-		atac_0();
-		break;
-		case 2: 
-		atac_2();
-		break;
-		case 4: 
-		atac_4();
-		break;
-		case 6: 
-		atac_6();
-		break;
+	// 	case 0:
+	// 	atac_0();
+	// 	break;
+	// 	case 2: 
+	// 	atac_2();
+	// 	break;
+	// 	case 4: 
+	// 	atac_4();
+	// 	break;
+	// 	case 6: 
+	// 	atac_6();
+	// 	break;
 
-		case 1: 
-		atac_1();
-		break;
-		case 3: 
-		atac_3();
-		break;
-		case 5: 
-		atac_5();
-		break;
-		case 7:
-		atac_7();
-		break;
+	// 	case 1: 
+	// 	atac_1();
+	// 	break;
+	// 	case 3: 
+	// 	atac_3();
+	// 	break;
+	// 	case 5: 
+	// 	atac_5();
+	// 	break;
+	// 	case 7:
+	// 	atac_7();
+	// 	break;
 
-	}
+	// }
 }

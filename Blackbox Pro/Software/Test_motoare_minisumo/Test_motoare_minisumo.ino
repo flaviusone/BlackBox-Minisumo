@@ -18,14 +18,14 @@ OrangutanMotors motors;
 unsigned long prev_millis;
 void setup()
 {
-  // pinMode(md1,OUTPUT); 
-  // pinMode(md2,OUTPUT); 
-  // pinMode(ms1,OUTPUT); 
-  // pinMode(ms2,OUTPUT); 
-  // digitalWrite(md1,LOW);
-  // digitalWrite(md2,LOW);
-  // digitalWrite(ms1,LOW);
-  // digitalWrite(ms2,LOW);
+  pinMode(md1,OUTPUT); 
+  pinMode(md2,OUTPUT); 
+  pinMode(ms1,OUTPUT); 
+  pinMode(ms2,OUTPUT); 
+  digitalWrite(md1,LOW);
+  digitalWrite(md2,LOW);
+  digitalWrite(ms1,LOW);
+  digitalWrite(ms2,LOW);
   delay(3000);
 }
 void loop()
@@ -61,8 +61,10 @@ void loop()
   //analogWrite(md1,200);
   //analogWrite(md2,0);
    //digitalWrite(md2,LOW);
-   motors.setSpeeds(200,200);
+  motors.setSpeeds(255,255);
      delay(1000);
+  motors.setSpeeds(0,0);
+    delay(1000);
 //    motors.setSpeeds(-200,-200);
 //     delay(1000);
 }

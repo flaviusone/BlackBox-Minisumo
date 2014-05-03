@@ -1,7 +1,7 @@
 void atac_0(){
-	viteza_inainte = 190; 
-	viteza = 150; 
-	viteza_rapid = 200; 
+	viteza_inainte = 255; 
+	viteza = 200; 
+	viteza_rapid = 255; 
 	val_delay = 100;
 	flag_d=1;
 	m_lat_delay_old_st = 0;
@@ -9,8 +9,7 @@ void atac_0(){
 	while(1){
 
 		// Check Stop
-		//if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
-		if (digitalRead(_Start)==0){
+		if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
 			//kill motors
 			while(1)
 				motors.setSpeeds(0,0);
@@ -19,7 +18,7 @@ void atac_0(){
 		//motors.setSpeeds(100,100);
 		citire_linie();
 		citire_banner();
-		citire_sharp();
+		// citire_sharp();
 
 		if(LS<praglinie && LD>praglinie){
 		 	x = 11;
