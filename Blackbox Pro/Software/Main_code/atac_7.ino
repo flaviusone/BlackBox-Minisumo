@@ -1,15 +1,16 @@
 // Functia de atac de baza
 void atac_7(){
-	viteza_inainte = 190; 
-	viteza = 150; 
-	viteza_rapid = 200; 
+	viteza_inainte = 255; 
+	viteza = 200; 
+	viteza_rapid = 255; 
 	val_delay = 100;
 	flag_d=0;
+	m_lat_delay_old_st = 0;
+	m_lat_delay_old_dr = 0;
 	while(1){
 
 		// Check Stop
-		//if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
-		if (digitalRead(_Start)==0){
+		if ((digitalRead(_Start)==0) && (digitalRead(_Kill)==0)){
 			//kill motors
 			while(1)
 				motors.setSpeeds(0,0);
@@ -22,48 +23,69 @@ void atac_7(){
 		if(LS<praglinie && LD>praglinie){
 		 	x = 11;
 		 	flag_lateral=0;
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(LS>praglinie && LD<praglinie){
 		 	x = 10;
 		 	flag_lateral=0;
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(LS<praglinie && LD<praglinie){
 		 	x = 1;
 		 	flag_lateral=0;
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(BS && BD){
 		 	x = 2;
 		 	flag_lateral=0;
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(BS && !BD){
 		 	x = 3;
 		 	flag_lateral=0;
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(!BS && BD){
 		 	x = 4;
 		 	flag_lateral=0;
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(flag_lateral){
 		 	if(millis() - m_lateral > val_delay)
 		 	{
 		 		x = 0;
 		 		flag_lateral=0;
+		 		m_lat_delay_old_st = micros();
+		 		m_lat_delay_old_dr = micros();
 		 	}
 		 }
 		 else if(SHS){
-		 	x = 6 ;
-		 	flag_lateral = 1;
-		 	m_lateral = millis();
-		 	flag_d=1;
+		 	if(micros()-m_lat_delay_old_st>15000){
+		 		x = 6;
+		 		flag_lateral = 1;
+		 		m_lateral = millis();
+		 		flag_d=1;
+		 	}
 		 }
 		 else if(SHD){
-		 	x = 5 ;
-		 	flag_lateral = 1;
-		 	m_lateral = millis();
-		 	flag_d=0;
+		 	if(micros()-m_lat_delay_old_dr>15000){
+		 		x = 5 ;
+			 	flag_lateral = 1;
+			 	m_lateral = millis();
+			 	flag_d=0;
+		 	}
 		 }
-		 else
+		 else{
+		 	m_lat_delay_old_st = micros();
+		 	m_lat_delay_old_dr = micros();
 		 	x = 0 	;
+		 }
 
 		 
 

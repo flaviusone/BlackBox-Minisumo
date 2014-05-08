@@ -39,9 +39,10 @@ void setup(){
 
   // Setam pini ca input
   for(i = 0 ; i<19 ; i++)
+
     pinMode(i,INPUT);
-  // pinMode(_S1, INPUT_PULLUP);
-  //   pinMode(_S2, INPUT_PULLUP);
+  pinMode(_SHS, INPUT_PULLUP);
+  pinMode(_SHD, INPUT_PULLUP);
   //   pinMode(_S3, INPUT_PULLUP);
   Serial.begin(9600);
 }

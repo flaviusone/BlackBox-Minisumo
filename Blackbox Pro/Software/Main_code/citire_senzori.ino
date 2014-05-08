@@ -1,24 +1,24 @@
 /*
- Blackbox v2.1 Debug file
-
-PINOUT - MAPPING
-
-BS			-	digital 4
-BD			-	digital 2
-LS			-	analog 2 - digital 16
-LD			-	analog 3 - digital 17
-SS 			-	analog 1 - digital 15
-SD			-	analog 0 - digital 14
-IR - Start 	-	analog 4 - digital 17
-IR - Kill 	-	analog 5 - digital 18
-M1.1 		-	digital 3
-M1.2		-	digital 11
-M2.1 		-	digital 5
-M2.2 		-	digital 6
-Strategy1 	-	digital 8
-Strategy2 	-	digital 9
-Strategy3 	-	digital 10
-*/
+ Blackbox vPro Debug file
+ 
+ PINOUT - MAPPING
+ 
+ BS			-	digital 12
+ BD			-	digital 8
+ LS			-	analog 0 
+ LD			-	analog 1 
+ SS 		-	digital 10
+ SD			-	digital 9
+ IR - Start 	-	analog 2 - digital 16
+ IR - Kill 	-	analog 3 - digital 17
+ M1.1 		-	digital 3
+ M1.2		-	digital 11
+ M2.1 		-	digital 5
+ M2.2 		-	digital 6
+ Strategy1 	-	digital 7
+ Strategy2 	-	digital 4
+ Strategy3 	-	digital 2
+ */
 
 
 

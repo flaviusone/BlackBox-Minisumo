@@ -28,6 +28,8 @@
 #define _S1 8
 #define _S2 9
 #define _S3 10
+#define _Start A4
+#define _Kill A5
 
 int i,BS,BD,S1,S2,S3;
 float SHS,SHD,LS=0,LD=0;
@@ -43,6 +45,8 @@ void setup(){
   // pinMode(_S1, INPUT_PULLUP);
   //   pinMode(_S2, INPUT_PULLUP);
   //   pinMode(_S3, INPUT_PULLUP);
+  pinMode(A4,INPUT);
+  pinMode(A5,INPUT);
   Serial.begin(9600);
 }
 void citire_sharp() {
@@ -62,7 +66,17 @@ void citire_sharp() {
     SHD=1;
 }
 
-
+void start()
+{
+  while(1){
+    // Serial.println(digitalRead(_Start));
+    // delay(100);
+    if ((digitalRead(_Start)==1) && (digitalRead(_Kill)==1)){
+    // if (digitalRead(_Start)==1){
+      break;
+    }
+  }
+}
 void loop(){
 
   //citire Bannere
@@ -80,37 +94,37 @@ void loop(){
   // Serial.println(SHD);
 
 
-  //citire senzori linie
-  LS=0;LD=0;
-  for(i=0;i<10;i++){
-     LS += analogRead(_LS);
-     LD += analogRead(_LD);
-  }
-  LS /=10;LD/=10;
-  Serial.print("LS	");
-  Serial.print(LS);
-  Serial.print("	LD	");
-  Serial.println(LD);
-  SHS = digitalRead(_SHS);
-  SHD = digitalRead(_SHD);
-  Serial.print("SHS  ");
-  Serial.print(SHS);
-  Serial.print(" SHD ");
-  Serial.println(SHD);
+  // //citire senzori linie
+  // LS=0;LD=0;
+  // for(i=0;i<10;i++){
+  //    LS += analogRead(_LS);
+  //    LD += analogRead(_LD);
+  // }
+  // LS /=10;LD/=10;
+  // Serial.print("LS	");
+  // Serial.print(LS);
+  // Serial.print("	LD	");
+  // Serial.println(LD);
+  // SHS = digitalRead(_SHS);
+  // SHD = digitalRead(_SHD);
+  // Serial.print("SHS  ");
+  // Serial.print(SHS);
+  // Serial.print(" SHD ");
+  // Serial.println(SHD);
 
 
-  BS = digitalRead(_BS);
-  BD = digitalRead(_BD);
-  Serial.print("BS  ");
-  Serial.print(BS);
-  Serial.print(" BD ");
-  Serial.println(BD);
+  // BS = digitalRead(_BS);
+  // BD = digitalRead(_BD);
+  // Serial.print("BS  ");
+  // Serial.print(BS);
+  // Serial.print(" BD ");
+  // Serial.println(BD);
 
-  m_debug = micros();
-  citire_sharp();
-  m_debug2 = micros()-m_debug;
-  Serial.print("Time: ");
-  Serial.println(m_debug2);
+  // m_debug = micros();
+  // citire_sharp();
+  // m_debug2 = micros()-m_debug;
+  // Serial.print("Time: ");
+  // Serial.println(m_debug2);
 
 
   //   //citire switch strategie
@@ -119,10 +133,11 @@ void loop(){
   //    S2 = digitalRead(_S2);	
   //    S3 = digitalRead(_S3);
   // }
-  //   sprintf(buff,"S1 	%d 	S2  	%d 	S3  	%d \n",S1,S2,S3);
-  //   Serial.print(buff);
-
-  delay(300);
+    sprintf(buff,"_Start  %d  _Kill   %d \n",digitalRead(_Start),digitalRead(_Kill));
+    Serial.print(buff);
+    start();  
+    
+  // delay(300);
 
 }
 

@@ -37,8 +37,8 @@ void start()
 	while(1){
 		// Serial.println(digitalRead(_Start));
 		// delay(100);
-		//if ((digitalRead(_Start)==1) && (digitalRead(_Kill)==1)){
-		if (digitalRead(_Start)==1){
+		if ((digitalRead(_Start)==1) && (digitalRead(_Kill)==1)){
+		// if (digitalRead(_Start)==1){
 			break;
 		}
 	}

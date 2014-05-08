@@ -45,6 +45,7 @@ void setup () {
   	modpins();   //???        /* set req pins as I/O */
   	strategie = strategy();
 	start();
+	strategie = 0;
 	//delay(2000);
 }
 

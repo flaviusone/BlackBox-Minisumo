@@ -35,7 +35,7 @@ OrangutanMotors motors;
 #define _S3 2
 #define _Start 16
 #define _Kill 17
-#define praglinie 850
+#define praglinie 500
 int strategie;
 int viteza_inainte,viteza,viteza_rapid,val_delay;
 int i,BS = 0,BD = 0,SHD=0,SHS=0,x,flag_lateral,flag_d;
@@ -43,13 +43,12 @@ float LS = 0, LD = 0;
 unsigned long m_lateral,m_inainte,m_rotire,m_lat_delay,m_lat_delay_old_dr,m_lat_delay_old_st;
 void setup () {
   	modpins();   //???        /* set req pins as I/O */
-  	// strategie = strategy();
+  	strategie = strategy();
   	strategie = 0;
 	start();
-	//delay(2000);
 }
 
-void loop () {
+void loop () {	
 	atac_0();
 	// switch(strategie) {
 

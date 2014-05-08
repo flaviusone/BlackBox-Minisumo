@@ -18,7 +18,7 @@ void atac_0(){
 		//motors.setSpeeds(100,100);
 		citire_linie();
 		citire_banner();
-		// citire_sharp();
+		citire_sharp();
 
 		if(LS<praglinie && LD>praglinie){
 		 	x = 11;
