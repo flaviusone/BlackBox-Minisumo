@@ -4,7 +4,7 @@ void atac_2(){
 	viteza = 190; 
 	viteza_rapid = 230; 
 	val_delay = 80;
-	flag_d=1;
+	flag_d=0;
 	m_lat_delay_old_st = 0;
 	m_lat_delay_old_dr = 0;
 	while(1){
@@ -115,12 +115,12 @@ void atac_2(){
 	 			break;
 		 	default:
 		 		if(flag_d==1)
-		 			motors.setSpeeds(51,255);
-		 			//motors.setSpeeds(10,255);
+		 			motors.setSpeeds(51,200);
+		 			//motors.setSpeeds(10,200);
 		 			//motors.setSpeeds(-200,200);
 		 		else
-		 			motors.setSpeeds(255,51);
-		 			//motors.setSpeeds(255,10);
+		 			motors.setSpeeds(200,51);
+		 			//motors.setSpeeds(200,10);
 					//motors.setSpeeds(-200,200);		 			
 		 		//motors.setSpeeds(-150,150);
 		 		//motors.setSpeeds(0,0);

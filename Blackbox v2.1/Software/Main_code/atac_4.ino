@@ -1,12 +1,12 @@
 // Functia de atac de baza
 void atac_4(){
-	viteza_inainte = 150; 
-	viteza = 150; 
+	viteza_inainte = 180; 
+	viteza = 130; 
 	viteza_rapid = 230; 
 	val_delay = 100;
 	m_inainte = millis();
 	m_rotire = millis();
-	flag_d=1;
+	flag_d=0;
 	m_lat_delay_old_st = 0;
 	m_lat_delay_old_dr = 0;
 	while(1){
@@ -129,7 +129,7 @@ void atac_4(){
 	 			evitare_inapoi_arc_dreapta();
 	 			break;
 		 	default:
-		 			motors.setSpeeds(130,130);
+		 			motors.setSpeeds(100,100);
 		 			//motors.setSpeeds(255,10);
 					//motors.setSpeeds(-200,200);		 			
 		 		//motors.setSpeeds(-150,150);

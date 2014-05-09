@@ -1,8 +1,8 @@
 void atac_0(){
 	viteza_inainte = 255; 
-	viteza = 200; 
+	viteza = 210; 
 	viteza_rapid = 255; 
-	val_delay = 100;
+	val_delay = 150;
 	flag_d=1;
 	m_lat_delay_old_st = 0;
 	m_lat_delay_old_dr = 0;

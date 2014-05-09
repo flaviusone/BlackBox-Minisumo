@@ -41,7 +41,7 @@ void setup(){
 
   // Setam pini ca input
   for(i = 0 ; i<19 ; i++)
-    pinMode(i,INPUT);
+    pinMode(i,INPUT_PULLUP);
   // pinMode(_S1, INPUT_PULLUP);
   //   pinMode(_S2, INPUT_PULLUP);
   //   pinMode(_S3, INPUT_PULLUP);
@@ -65,18 +65,18 @@ void citire_sharp() {
   else
     SHD=1;
 }
-
-void start()
-{
-  while(1){
-    // Serial.println(digitalRead(_Start));
-    // delay(100);
-    if ((digitalRead(_Start)==1) && (digitalRead(_Kill)==1)){
-    // if (digitalRead(_Start)==1){
-      break;
-    }
+int strategy() {
+  int pin1 = 0, pin2 = 0, pin3 = 0; //pin3 nefunctional ?
+  for (i = 0; i < 10; i++) {
+    pin1 =  digitalRead(_S1);
+    pin2 =  digitalRead(_S2);
+    pin3 =  digitalRead(_S3);
   }
+  int strategie = 4*pin3 + 2 * pin2 + pin1 ;
+  return strategie;
 }
+
+
 void loop(){
 
   //citire Bannere
@@ -133,11 +133,13 @@ void loop(){
   //    S2 = digitalRead(_S2);	
   //    S3 = digitalRead(_S3);
   // }
-    sprintf(buff,"_Start  %d  _Kill   %d \n",digitalRead(_Start),digitalRead(_Kill));
-    Serial.print(buff);
-    start();  
+  //sprintf(buff,"_Start  %d  _Kill   %d \n",digitalRead(_Start),digitalRead(_Kill));
+  int strat = strategy();
+  sprintf(buff,"%d %d %d Strat=%d\n",digitalRead(_S1),digitalRead(_S2),digitalRead(_S3),strat);
+  Serial.println(buff);
+    //start();  
     
-  // delay(300);
+  delay(1000);
 
 }
 

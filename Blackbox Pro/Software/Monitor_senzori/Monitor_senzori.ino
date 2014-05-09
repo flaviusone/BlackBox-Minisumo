@@ -38,9 +38,10 @@ char buff[20];
 void setup(){
 
   // Setam pini ca input
-  for(i = 0 ; i<19 ; i++)
-
-    pinMode(i,INPUT);
+  for(i = 0 ; i<19 ; i++){
+    // pinMode(i,INPUT);
+    pinMode(i, INPUT_PULLUP);
+  }
   pinMode(_SHS, INPUT_PULLUP);
   pinMode(_SHD, INPUT_PULLUP);
   //   pinMode(_S3, INPUT_PULLUP);
@@ -64,20 +65,32 @@ void citire_sharp() {
 }
 
 
+int strategy() {
+  int pin1 = 0, pin2 = 0, pin3 = 0; //pin3 nefunctional ?
+  for (i = 0; i < 10; i++) {
+    pin1 =  digitalRead(_S1);
+    pin2 =  digitalRead(_S2);
+    pin3 =  digitalRead(_S3);
+  }
+  int strategie = 4*pin3 + 2 * pin2 + pin1 ;
+  return strategie;
+}
+
+
 void loop(){
 
   //citire Bannere
   // BS = digitalRead(_BS);
   // BD = digitalRead(_BD);
-  //sprintf(buff,"BS 	%d BD  	%d \n",BS,BD);
+  //sprintf(buff,"BS  %d BD   %d \n",BS,BD);
   //Serial.print(buff);
 
   // //citire sharp lateral
   // SHS = analogRead(_SS);
   // SHD = analogRead(_SD);
-  // Serial.print("SHS	");
+  // Serial.print("SHS  ");
   // Serial.print(SHS);
-  // Serial.print("	SHD	");
+  // Serial.print(" SHD ");
   // Serial.println(SHD);
 
 
@@ -88,9 +101,9 @@ void loop(){
   //    LD += analogRead(_LD);
   // }
   // LS /=10;LD/=10;
-  // Serial.print("LS	");
+  // Serial.print("LS ");
   // Serial.print(LS);
-  // Serial.print("	LD	");
+  // Serial.print(" LD  ");
   // Serial.println(LD);
   // SHS = digitalRead(_SHS);
   // SHD = digitalRead(_SHD);
@@ -113,20 +126,19 @@ void loop(){
   // Serial.print("Time: ");
   // Serial.println(m_debug2);
 
-  // sprintf(buff,"\n\nPin 0 = %d\nPin 1 = %d\nPin 2 = %d\nPin 4 = %d\nPin 7 = %d\nPin 8 = %d\nPin 9 = %d\nPin 10 = %d\nPin 12 = %d\nPin 13 = %d\n",digitalRead(0),digitalRead(1),digitalRead(2),digitalRead(4),digitalRead(7),digitalRead(8),digitalRead(9),digitalRead(10),digitalRead(12),digitalRead(13));
-  // sprintf(buff,"Analog  2 = %d\nAnalog  3 = %d\nAnalog  4 = %d\nAnalog  5 = %d\n\n\n",digitalRead(16),digitalRead(17),digitalRead(18),digitalRead(19));
-  // Serial.print(buff);
+
   //   //citire switch strategie
   //   for(i=0;i<10;i++){
   //    S1 = digitalRead(_S1);
-  //    S2 = digitalRead(_S2);	
+  //    S2 = digitalRead(_S2);  
   //    S3 = digitalRead(_S3);
   // }
-  //   sprintf(buff,"S1 	%d 	S2  	%d 	S3  	%d \n",S1,S2,S3);
-  //   Serial.print(buff);
-
-  delay(3000);
+  //sprintf(buff,"_Start  %d  _Kill   %d \n",digitalRead(_Start),digitalRead(_Kill));
+  int strat = strategy();
+  sprintf(buff,"%d %d %d Strat=%d\n",digitalRead(_S1),digitalRead(_S2),digitalRead(_S3),strat);
+  Serial.println(buff);
+    //start();  
+    
+  delay(1000);
 
 }
-
-

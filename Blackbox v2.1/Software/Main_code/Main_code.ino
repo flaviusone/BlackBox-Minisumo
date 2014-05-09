@@ -43,10 +43,8 @@ float LS = 0, LD = 0;
 unsigned long m_lateral,m_inainte,m_rotire,m_lat_delay,m_lat_delay_old_dr,m_lat_delay_old_st;
 void setup () {
   	modpins();   //???        /* set req pins as I/O */
-  	strategie = strategy();
 	start();
-	strategie = 0;
-	//delay(2000);
+	strategie = strategy();
 }
 
 void loop () {

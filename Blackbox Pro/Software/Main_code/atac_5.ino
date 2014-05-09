@@ -84,8 +84,13 @@ void atac_5(){
 		 	}
 		 }
 		 else{
-		 	if(millis()-m_inainte>300){
-		 		if(millis()-m_rotire>460){
+		 	if(millis()-m_inainte>250){
+		 		m_lat_delay_old_st = micros();
+		 		m_lat_delay_old_dr = micros();
+		 		x=0;	
+		 	}
+		 	else{
+		 		if(millis()-m_rotire>400){
 		 			m_inainte = millis();
 		 			x =0;
 		 			m_rotire = millis();
@@ -93,11 +98,6 @@ void atac_5(){
 		 			if(flag_d==1)x=5;
 		 			else x=6;
 		 		}
-		 	}
-		 	else{
-		 		m_lat_delay_old_st = micros();
-		 		m_lat_delay_old_dr = micros();
-		 		x=0;	
 		 	} 
 		 }
 
@@ -129,7 +129,7 @@ void atac_5(){
 	 			evitare_inapoi_arc_dreapta();
 	 			break;
 		 	default:
-		 			motors.setSpeeds(130,130);
+		 			motors.setSpeeds(170,170);
 		 			//motors.setSpeeds(255,10);
 					//motors.setSpeeds(-200,200);		 			
 		 		//motors.setSpeeds(-150,150);

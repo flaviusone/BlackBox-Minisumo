@@ -1,9 +1,9 @@
 // Functia de atac de baza
 void atac_6(){
 	viteza_inainte = 255; 
-	viteza = 200; 
+	viteza = 255; 
 	viteza_rapid = 255; 
-	val_delay = 100;
+	val_delay = 150;
 	flag_d=1;
 	m_lat_delay_old_st = 0;
 	m_lat_delay_old_dr = 0;
@@ -120,11 +120,11 @@ void atac_6(){
 		 		if(flag_d==1)
 		 			//motors.setSpeeds(51,255);
 		 			//motors.setSpeeds(10,255);
-		 			motors.setSpeeds(-200,200);
+		 			motors.setSpeeds(-230,230);
 		 		else
-		 			//motors.setSpeeds(255,51);
-		 			//motors.setSpeeds(255,10);
-					motors.setSpeeds(-200,200);		 			
+		 			//motors.setSpeeds(230,51);
+		 			//motors.setSpeeds(230,10);
+					motors.setSpeeds(230,230);		 			
 		 		//motors.setSpeeds(-150,150);
 		 		//motors.setSpeeds(0,0);
 		 }

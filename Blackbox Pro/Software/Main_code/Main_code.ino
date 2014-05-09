@@ -40,43 +40,41 @@ int strategie;
 int viteza_inainte,viteza,viteza_rapid,val_delay;
 int i,BS = 0,BD = 0,SHD=0,SHS=0,x,flag_lateral,flag_d;
 float LS = 0, LD = 0;
-unsigned long m_lateral,m_inainte,m_rotire,m_lat_delay,m_lat_delay_old_dr,m_lat_delay_old_st;
+unsigned long m_lateral,m_inainte,m_rotire,m_lat_delay,m_lat_delay_old_dr,m_lat_delay_old_st;//,m_banner_delay_st,m_banner_delay_dr,m_banner_delay_old_st,m_banner_delay_old_dr;
 void setup () {
   	modpins();   //???        /* set req pins as I/O */
-  	strategie = strategy();
-  	strategie = 0;
 	start();
+	strategie = strategy();
 }
 
 void loop () {	
-	atac_0();
-	// switch(strategie) {
+	switch(strategie) {
 
-	// 	case 0:
-	// 	atac_0();
-	// 	break;
-	// 	case 2: 
-	// 	atac_2();
-	// 	break;
-	// 	case 4: 
-	// 	atac_4();
-	// 	break;
-	// 	case 6: 
-	// 	atac_6();
-	// 	break;
+		case 0:
+		atac_0();
+		break;
+		case 2: 
+		atac_2();
+		break;
+		case 4: 
+		atac_4();
+		break;
+		case 6: 
+		atac_6();
+		break;
 
-	// 	case 1: 
-	// 	atac_1();
-	// 	break;
-	// 	case 3: 
-	// 	atac_3();
-	// 	break;
-	// 	case 5: 
-	// 	atac_5();
-	// 	break;
-	// 	case 7:
-	// 	atac_7();
-	// 	break;
+		case 1: 
+		atac_1();
+		break;
+		case 3: 
+		atac_3();
+		break;
+		case 5: 
+		atac_5();
+		break;
+		case 7:
+		atac_7();
+		break;
 
-	// }
+	}
 }

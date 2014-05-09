@@ -64,8 +64,8 @@ void atac_4(){
 		 	flag_d=0;
 		 }
 		 else{
-		 	if(millis()-m_inainte>300){
-		 		if(millis()-m_rotire>460){
+		 	if(millis()-m_inainte>250){
+		 		if(millis()-m_rotire>400){
 		 			m_inainte = millis();
 		 			x =0;
 		 			m_rotire = millis();
@@ -105,7 +105,7 @@ void atac_4(){
 	 			evitare_inapoi_arc_dreapta();
 	 			break;
 		 	default:
-		 			motors.setSpeeds(130,130);
+		 			motors.setSpeeds(170,170);
 		 			//motors.setSpeeds(255,10);
 					//motors.setSpeeds(-200,200);		 			
 		 		//motors.setSpeeds(-150,150);
