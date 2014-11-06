@@ -19,7 +19,7 @@ void atac_4(){
 		//motors.setSpeeds(100,100);
 		citire_linie();
 		citire_banner();
-		citire_sharp();
+		//citire_sharp();
 		if(LS<praglinie && LD>praglinie){
 		 	x = 11;
 		 	flag_lateral=0;
@@ -39,10 +39,12 @@ void atac_4(){
 		 else if(BS && !BD){
 		 	x = 3;
 		 	flag_lateral=0;
+		 	flag_d=1;
 		 }
 		 else if(!BS && BD){
 		 	x = 4;
 		 	flag_lateral=0;
+		 	flag_d=0;
 		 }
 		 else if(flag_lateral){
 		 	if(millis() - m_lateral > val_delay)

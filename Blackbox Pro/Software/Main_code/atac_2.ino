@@ -20,7 +20,7 @@ void atac_2(){
 		//motors.setSpeeds(100,100);
 		citire_linie();
 		citire_banner();
-		citire_sharp();
+		//citire_sharp();
 		if(LS<praglinie && LD>praglinie){
 		 	x = 11;
 		 	flag_lateral=0;
@@ -48,12 +48,14 @@ void atac_2(){
 		 else if(BS && !BD){
 		 	x = 3;
 		 	flag_lateral=0;
+		 	flag_d=1;
 		 	m_lat_delay_old_st = micros();
 		 	m_lat_delay_old_dr = micros();
 		 }
 		 else if(!BS && BD){
 		 	x = 4;
 		 	flag_lateral=0;
+		 	flag_d=0;
 		 	m_lat_delay_old_st = micros();
 		 	m_lat_delay_old_dr = micros();
 		 }
